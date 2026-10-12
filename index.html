@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<title>MP Kit demo room</title>
+<meta name="description" content="A test room for a multiplayer kit: peer-to-peer rooms, a host, bots and proximity voice.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#10131c">
+<link rel="icon" href="data:,">
+<script type="importmap">{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.182.0/build/three.module.js", "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.182.0/examples/jsm/" } }</script>
+<link rel="stylesheet" href="demo/style.css">
+</head>
+<body>
+<noscript><p style="padding:24px;color:#eee">This is a test room for a multiplayer kit. It needs JavaScript and WebGL.</p></noscript>
+<canvas id="game" aria-label="Demo arena"></canvas>
+<div id="hud" hidden>
+  <div id="scores" aria-live="polite"></div>
+  <div id="net"></div>
+  <button id="players" type="button">Players</button>
+  <div id="hint"></div>
+</div>
+<script type="module" src="demo/main.js"></script>
+</body>
+</html>

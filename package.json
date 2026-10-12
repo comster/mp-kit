@@ -1,0 +1,19 @@
+{
+  "name": "mp-kit",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "description": "Multiplayer starter kit: peer-to-peer rooms, a host, bots and proximity voice. The kit itself (kit/) has no build step; these are test and vendoring tools only.",
+  "scripts": {
+    "test": "node --test test/room.test.mjs test/worker.test.mjs",
+    "test:browser": "node test/browser.mjs",
+    "serve": "node tools/serve.mjs 8080",
+    "vendor": "sh tools/vendor.sh"
+  },
+  "devDependencies": {
+    "@trystero-p2p/ws-relay": "0.26.0",
+    "esbuild": "0.25.10",
+    "playwright": "1.56.0",
+    "trystero": "0.26.0"
+  }
+}

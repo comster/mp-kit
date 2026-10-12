@@ -1,0 +1,32 @@
+# The kit's Worker: TURN relay credentials and the public room list.
+# How to deploy, check and switch it off: ../README.md ("The Worker").
+name = "mp-kit-hub"
+main = "src/index.js"
+compatibility_date = "2026-10-01"
+workers_dev = true
+
+[vars]
+ENABLED = "true"                      # the kill switch: "false" stops new relayed connections
+ALLOWED_ORIGINS = "https://example.com"   # the site your games are served from; comma-separated for several
+DAILY_LIMIT = "500"                   # credentials a day; each is one player joining one room
+TTL_SECONDS = "14400"
+ICE_PER_IP_HOUR = "20"                # credentials one address may take in an hour (a household of players shares one)
+QUICKPLAY = "true"                    # "false" turns the public room list off
+
+# The daily counter of credentials handed out. Create it with `wrangler kv namespace create BUDGET`
+# and put the id it prints here.
+[[kv_namespaces]]
+binding = "BUDGET"
+id = "YOUR_KV_NAMESPACE_ID"
+
+# The per-address counters and the list of public rooms (one Durable Object; SQLite-backed, which is
+# the kind the Free plan allows).
+[[durable_objects.bindings]]
+name = "HUB"
+class_name = "Hub"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["Hub"]
+
+# Secrets (never in this file):  wrangler secret put TURN_KEY_ID  /  wrangler secret put TURN_KEY_API_TOKEN

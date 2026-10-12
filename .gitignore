@@ -1,0 +1,5 @@
+node_modules/
+dist/
+promo/
+test/shots/
+.DS_Store
